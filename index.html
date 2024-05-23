@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+       *{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(249, 245, 245);
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 200px;
+    
+}
+ .calculator{
+   background-color: rgb(17, 17, 17);
+   border: 1px solid rgb(105, 102, 102);
+   border-radius: 10px;
+   width: 230px;
+    height: 300px;
+    padding: 20px;
+    position: fixed;
+}
+.calculator input{
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    border-bottom: 0.5px solid grey;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    background-color: transparent;
+    box-shadow: -8px -8px 15px rgba(8, 8, 8, 0.5), 2px 2px 13px rgba(246, 243, 243, 0.5);
+}
+.display input{
+    width: 90%;
+    height: 40px;
+    font-size: 20px;
+    border: none;
+    border-bottom: 0.5px solid grey;
+    text-align: right;
+    cursor: pointer;
+    outline: 0;
+    
+}
+ form .operator{
+    color: rgb(77, 77, 216);
+    font-size: 13px;
+}
+form .equal{
+    background-color: orange;
+}
+    
+
+
+    </style>
+</head>
+<body>
+   <div class="container">
+      <div class="calculator">
+        <form>
+           <div class="display">
+               <input type="text" name="display">
+           </div>
+           <div>
+              <input type="button" value="AC" onclick="display.value ='' " class="operator">
+              <input type="button" value="Del" onclick="display.value=display.value.slice(0,-1) " class="operator">
+              <input type="button" value="(-/+)" onclick="toggleSign() " class="operator">
+              <input type="button" value="/" onclick="display.value +='/' " class="operator">
+           </div>
+           <div>
+            <input type="button" value="7" onclick="display.value +='7' ">
+            <input type="button" value="8" onclick="display.value +='8' ">
+            <input type="button" value="9" onclick="display.value +='9' ">
+            <input type="button" value="*" onclick="display.value +='*' " class="operator">
+         </div>
+         <div>
+            <input type="button" value="6" onclick="display.value +='6' ">
+            <input type="button" value="5" onclick="display.value +='5' ">
+            <input type="button" value="4" onclick="display.value +='4' ">
+            <input type="button" value="-" onclick="display.value +='-' " class="operator">
+         </div>
+         <div>
+            <input type="button" value="3" onclick="display.value +='3' ">
+            <input type="button" value="2" onclick="display.value +='2' ">
+            <input type="button" value="1" onclick="display.value +='1' ">
+            <input type="button" value="+" onclick="display.value +='+' " class="operator">
+         </div>
+         <div>
+            <input type="button" value="%" onclick="display.value +='%' ">
+            <input type="button" value="0" onclick="display.value +='0' ">
+            <input type="button" value="." onclick="display.value +='.' ">
+            <input type="button" value="=" onclick="display.value =eval(display.value) " class="equal">
+         </div>
+      </div>
+    </form>
+   </div>
+
+   <script>
+
+function toggleSign() {
+  var display = document.getElementsByName("display")[0];
+  var currentValue = parseFloat(display.value);
+  
+  // Check if the number is positive or negative and toggle the sign accordingly
+  if (currentValue > 0) {
+    display.value = "-" + display.value;
+  } else if (currentValue < 0) {
+    display.value = display.value.slice(1);
+  }
+}
+   </script>
+</body>
+</html>
